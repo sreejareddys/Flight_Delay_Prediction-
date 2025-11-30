@@ -1,0 +1,750 @@
+{% extends 'base.html' %}
+
+{% block index %}
+
+    <!-- Masthead -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+
+          
+            <a class="navbar-brand" href="/index2">Flight Delay</a>
+            <a href="/index1">Visualization</a>
+            <a href="/login">Sign-Out</a>
+            
+       
+          
+          
+        </div>
+       
+      </div>
+    </nav>
+    <header class="masthead text-white text-center">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-7 mx-auto">
+            <h1 class="mb-5">Flight delay prediction</h1>
+          </div>
+          <!-- <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <form method="post" action="" autocomplete="off">
+
+              <span class="input-group-btn">
+                  <button id="random_btn" class="btn btn-block btn-lg btn-primary" style="width: 320px">Fill with random data</button>
+              </span>
+
+              <div class="form-row mt-4 mb-2" id="carrier_row">
+                <div class="input-group input-group-lg col-12 col-md-11">
+                  <input list="carriers" class="form-control rounded" placeholder="Carrier" name="carrier_name" id="carrier_name" onfocus="this.value=''">
+                    <datalist id="carriers">
+                      <option value="American Airlines (AA)">
+                      <option value="Alaska Airlines (AS)">
+                      <option value="JetBlue (B6)">
+                      <option value="Delta Air Lines (DL)">
+                      <option value="Atlantic Southeast Airlines (EV)">
+                      <option value="Frontier Airlines (F9)">
+                      <option value="Hawaiian Airlines (HA)">
+                      <option value="Spirit Airlines (NK)">
+                      <option value="SkyWest Airlines (OO)">
+                      <option value="Virgin America (UA)">
+                      <option value="United Airlines (VX)">
+                      <option value="Southwest Airlines (WN)">
+                    </datalist>
+                </div>
+              </div>
+
+              <div class="form-row mt-4 mb-2" id="origin_row">
+                <div class="input-group input-group-lg col-12 col-md-11">
+                  <input list="origin_airports" class="form-control rounded" placeholder="From" name="origin_name" id="origin_name" onfocus="this.value=''">
+                    <datalist id="origin_airports">
+                      <option value="Aberdeen, SD (Aberdeen Regional Airport, ABR)">
+                      <option value="Abilene, TX (Abilene Regional Airport, ABI)">
+                      <option value="Adak Island, AK (Adak Airport, ADK)">
+                      <option value="Aguadilla, PR (Rafael Hernandez Airport, BQN)">
+                      <option value="Akron, OH (Akron Canton Regional Airport, CAK)">
+                      <option value="Albany, GA (Southwest Georgia Regional Airport, ABY)">
+                      <option value="Albany, NY (Albany International Airport, ALB)">
+                      <option value="Albuquerque, NM (Albuquerque International Sunport, ABQ)">
+                      <option value="Alexandria, LA (Alexandria International Airport, AEX)">
+                      <option value="Allentown/Bethlehem/Easton, PA (Lehigh Valley International Airport, ABE)">
+                      <option value="Alpena, MI (Alpena County Regional Airport, APN)">
+                      <option value="Amarillo, TX (Rick Husband Amarillo International Airport, AMA)">
+                      <option value="Anchorage, AK (Ted Stevens Anchorage International Airport, ANC)">
+                      <option value="Appleton, WI (Appleton International Airport, ATW)">
+                      <option value="Arcata/Eureka, CA (California Redwood Coast-Humboldt County Airport, ACV)">
+                      <option value="Asheville, NC (Asheville Regional Airport, AVL)">
+                      <option value="Aspen, CO (Aspen-Pitkin Co/Sardy Field, ASE)">
+                      <option value="Atlanta, GA (Hartsfield Jackson Atlanta International Airport, ATL)">
+                      <option value="Atlantic City, NJ (Atlantic City International Airport, ACY)">
+                      <option value="Augusta, GA (Augusta Regional At Bush Field, AGS)">
+                      <option value="Austin, TX (Austin Bergstrom International Airport, AUS)">
+                      <option value="Bakersfield, CA (Meadows Field, BFL)">
+                      <option value="Baltimore, MD (Baltimore/Washington International Thurgood Marshall Airport, BWI)">
+                      <option value="Bangor, ME (Bangor International Airport, BGR)">
+                      <option value="Barrow, AK (Wiley Post Will Rogers Memorial Airport, BRW)">
+                      <option value="Baton Rouge, LA (Baton Rouge Metropolitan Airport, BTR)">
+                      <option value="Beaumont/Port Arthur, TX (Southeast Texas Regional Airport, BPT)">
+                      <option value="Bellingham, WA (Bellingham International Airport, BLI)">
+                      <option value="Bemidji, MN (Bemidji Regional Airport, BJI)">
+                      <option value="Bend/Redmond, OR (Roberts Field, RDM)">
+                      <option value="Bethel, AK (Bethel Airport, BET)">
+                      <option value="Billings, MT (Billings Logan International Airport, BIL)">
+                      <option value="Binghamton, NY (Greater Binghamton/Edwin A Link field, BGM)">
+                      <option value="Birmingham, AL (Birmingham-Shuttlesworth International Airport, BHM)">
+                      <option value="Bismarck/Mandan, ND (Bismarck Municipal Airport, BIS)">
+                      <option value="Bloomington/Normal, IL (Central Illinois Regional Airport at Bloomington-Normal, BMI)">
+                      <option value="Boise, ID (Boise Air Terminal/Gowen Field, BOI)">
+                      <option value="Boston, MA (General Edward Lawrence Logan International Airport, BOS)">
+                      <option value="Bozeman, MT (Gallatin Field, BZN)">
+                      <option value="Brainerd, MN (Brainerd Lakes Regional Airport, BRD)">
+                      <option value="Bristol/Johnson City/Kingsport, TN (Tri-Cities Regional TN/VA Airport, TRI)">
+                      <option value="Brownsville, TX (Brownsville South Padre Island International Airport, BRO)">
+                      <option value="Brunswick, GA (Brunswick Golden Isles Airport, BQK)">
+                      <option value="Buffalo, NY (Buffalo Niagara International Airport, BUF)">
+                      <option value="Burbank, CA (Bob Hope Airport, BUR)">
+                      <option value="Burlington, VT (Burlington International Airport, BTV)">
+                      <option value="Butte, MT (Bert Mooney Airport, BTM)">
+                      <option value="Casper, WY (Casper-Natrona County International Airport, CPR)">
+                      <option value="Cedar City, UT (Cedar City Regional Airport, CDC)">
+                      <option value="Cedar Rapids/Iowa City, IA (The Eastern Iowa Airport, CID)">
+                      <option value="Charleston, SC (Charleston Air Force Base-International Airport, CHS)">
+                      <option value="Charleston/Dunbar, WV (Yeager Airport, CRW)">
+                      <option value="Charlotte Amalie, VI (Cyril E. King Airport, STT)">
+                      <option value="Charlotte, NC (Charlotte Douglas International Airport, CLT)">
+                      <option value="Charlottesville, VA (Charlottesville Albemarle Airport, CHO)">
+                      <option value="Chattanooga, TN (Lovell Field, CHA)">
+                      <option value="Chicago, IL (Chicago O'Hare International Airport, ORD)">
+                      <option value="Chicago, IL (Chicago Midway International Airport, MDW)">
+                      <option value="Christiansted, VI (Henry E Rohlsen Airport, STX)">
+                      <option value="Cincinnati, OH (Cincinnati Northern Kentucky International Airport, CVG)">
+                      <option value="Cleveland, OH (Cleveland Hopkins International Airport, CLE)">
+                      <option value="Cody, WY (Yellowstone Regional Airport, COD)">
+                      <option value="College Station/Bryan, TX (Easterwood Field, CLL)">
+                      <option value="Colorado Springs, CO (City of Colorado Springs Municipal Airport, COS)">
+                      <option value="Columbia, SC (Columbia Metropolitan Airport, CAE)">
+                      <option value="Columbus, GA (Columbus Metropolitan Airport, CSG)">
+                      <option value="Columbus, MS (Golden Triangle Regional Airport, GTR)">
+                      <option value="Columbus, OH (John Glenn Columbus International Airport, CMH)">
+                      <option value="Cordova, AK (Merle K (Mudhole) Smith Airport, CDV)">
+                      <option value="Corpus Christi, TX (Corpus Christi International Airport, CRP)">
+                      <option value="Dallas, TX (Dallas Love Field, DAL)">
+                      <option value="Dallas/Fort Worth, TX (Dallas Fort Worth International Airport, DFW)">
+                      <option value="Dayton, OH (James M Cox Dayton International Airport, DAY)">
+                      <option value="Daytona Beach, FL (Daytona Beach International Airport, DAB)">
+                      <option value="Deadhorse, AK (Deadhorse Airport, SCC)">
+                      <option value="Denver, CO (Denver International Airport, DEN)">
+                      <option value="Des Moines, IA (Des Moines International Airport, DSM)">
+                      <option value="Detroit, MI (Detroit Metropolitan Wayne County Airport, DTW)">
+                      <option value="Devils Lake, ND (Devils Lake Regional Airport, DVL)">
+                      <option value="Dillingham, AK (Dillingham Airport, DLG)">
+                      <option value="Dothan, AL (Dothan Regional Airport, DHN)">
+                      <option value="Duluth, MN (Duluth International Airport, DLH)">
+                      <option value="Durango, CO (Durango La Plata County Airport, DRO)">
+                      <option value="Eagle, CO (Eagle County Regional Airport, EGE)">
+                      <option value="Eau Claire, WI (Chippewa Valley Regional Airport, EAU)">
+                      <option value="El Paso, TX (El Paso International Airport, ELP)">
+                      <option value="Elko, NV (Elko Regional Airport, EKO)">
+                      <option value="Elmira/Corning, NY (Elmira Corning Regional Airport, ELM)">
+                      <option value="Erie, PA (Erie International Tom Ridge Field, ERI)">
+                      <option value="Escanaba, MI (Delta County Airport, ESC)">
+                      <option value="Eugene, OR (Mahlon Sweet Field, EUG)">
+                      <option value="Evansville, IN (Evansville Regional Airport, EVV)">
+                      <option value="Fairbanks, AK (Fairbanks International Airport, FAI)">
+                      <option value="Fargo, ND (Hector International Airport, FAR)">
+                      <option value="Fayetteville, AR (Northwest Arkansas Regional Airport, XNA)">
+                      <option value="Fayetteville, NC (Fayetteville Regional Grannis Field, FAY)">
+                      <option value="Flagstaff, AZ (Flagstaff Pulliam Airport, FLG)">
+                      <option value="Flint, MI (Bishop International Airport, FNT)">
+                      <option value="Fort Lauderdale, FL (Fort Lauderdale Hollywood International Airport, FLL)">
+                      <option value="Fort Myers, FL (Southwest Florida International Airport, RSW)">
+                      <option value="Fort Smith, AR (Fort Smith Regional Airport, FSM)">
+                      <option value="Fort Wayne, IN (Fort Wayne International Airport, FWA)">
+                      <option value="Fresno, CA (Fresno Yosemite International Airport, FAT)">
+                      <option value="Gainesville, FL (Gainesville Regional Airport, GNV)">
+                      <option value="Garden City, KS (Garden City Regional Airport, GCK)">
+                      <option value="Gillette, WY (Gillette Campbell County Airport, GCC)">
+                      <option value="Grand Forks, ND (Grand Forks International Airport, GFK)">
+                      <option value="Grand Island, NE (Central Nebraska Regional Airport, GRI)">
+                      <option value="Grand Junction, CO (Grand Junction Regional Airport, GJT)">
+                      <option value="Grand Rapids, MI (Gerald R. Ford International Airport, GRR)">
+                      <option value="Great Falls, MT (Great Falls International Airport, GTF)">
+                      <option value="Green Bay, WI (Austin Straubel International Airport, GRB)">
+                      <option value="Greensboro/High Point, NC (Piedmont Triad International Airport, GSO)">
+                      <option value="Greer, SC (Greenville Spartanburg International Airport, GSP)">
+                      <option value="Guam, TT (Antonio B. Won Pat International Airport, GUM)">
+                      <option value="Gulfport/Biloxi, MS (Gulfport Biloxi International Airport, GPT)">
+                      <option value="Gunnison, CO (Gunnison Crested Butte Regional Airport, GUC)">
+                      <option value="Gustavus, AK (Gustavus Airport, GST)">
+                      <option value="Hancock/Houghton, MI (Houghton County Memorial Airport, CMX)">
+                      <option value="Harlingen/San Benito, TX (Valley International Airport, HRL)">
+                      <option value="Harrisburg, PA (Harrisburg International Airport, MDT)">
+                      <option value="Hartford, CT (Bradley International Airport, BDL)">
+                      <option value="Hattiesburg/Laurel, MS (Hattiesburg Laurel Regional Airport, PIB)">
+                      <option value="Hayden, CO (Yampa Valley Airport, HDN)">
+                      <option value="Hays, KS (Hays Regional Airport, HYS)">
+                      <option value="Helena, MT (Helena Regional Airport, HLN)">
+                      <option value="Hibbing, MN (Range Regional Airport, HIB)">
+                      <option value="Hilo, HI (Hilo International Airport, ITO)">
+                      <option value="Hobbs, NM (Lea County Regional Airport, HOB)">
+                      <option value="Honolulu, HI (Daniel K Inouye International Airport, HNL)">
+                      <option value="Houston, TX (Ellington Airport, EFD)">
+                      <option value="Houston, TX (George Bush Intercontinental Houston Airport, IAH)">
+                      <option value="Houston, TX (William P Hobby Airport, HOU)">
+                      <option value="Huntsville, AL (Huntsville International Carl T Jones Field, HSV)">
+                      <option value="Hyannis, MA (Barnstable Municipal Boardman Polando Field, HYA)">
+                      <option value="Idaho Falls, ID (Idaho Falls Regional Airport, IDA)">
+                      <option value="Indianapolis, IN (Indianapolis International Airport, IND)">
+                      <option value="International Falls, MN (Falls International Airport, INL)">
+                      <option value="Iron Mountain/Kingsfd, MI (Ford Airport, IMT)">
+                      <option value="Islip, NY (Long Island Mac Arthur Airport, ISP)">
+                      <option value="Ithaca/Cortland, NY (Ithaca Tompkins Regional Airport, ITH)">
+                      <option value="Jackson, WY (Jackson Hole Airport, JAC)">
+                      <option value="Jackson/Vicksburg, MS (Jackson-Medgar Wiley Evers International Airport, JAN)">
+                      <option value="Jacksonville, FL (Jacksonville International Airport, JAX)">
+                      <option value="Jacksonville/Camp Lejeune, NC (Albert J Ellis Airport, OAJ)">
+                      <option value="Jamestown, ND (Jamestown Regional Airport, JMS)">
+                      <option value="Joplin, MO (Joplin Regional Airport, JLN)">
+                      <option value="Juneau, AK (Juneau International Airport, JNU)">
+                      <option value="Kahului, HI (Kahului Airport, OGG)">
+                      <option value="Kalamazoo, MI (Kalamazoo Battle Creek International Airport, AZO)">
+                      <option value="Kalispell, MT (Glacier Park International Airport, FCA)">
+                      <option value="Kansas City, MO (Kansas City International Airport, MCI)">
+                      <option value="Ketchikan, AK (Ketchikan International Airport, KTN)">
+                      <option value="Key West, FL (Key West International Airport, EYW)">
+                      <option value="Killeen, TX (Robert Gray  Army Air Field Airport, GRK)">
+                      <option value="King Salmon, AK (King Salmon Airport, AKN)">
+                      <option value="Knoxville, TN (McGhee Tyson Airport, TYS)">
+                      <option value="Kodiak, AK (Kodiak Airport, ADQ)">
+                      <option value="Kona, HI (Ellison Onizuka Kona International At Keahole Airport, KOA)">
+                      <option value="Kotzebue, AK (Ralph Wien Memorial Airport, OTZ)">
+                      <option value="La Crosse, WI (La Crosse Municipal Airport, LSE)">
+                      <option value="Lafayette, LA (Lafayette Regional Airport, LFT)">
+                      <option value="Lake Charles, LA (Lake Charles Regional Airport, LCH)">
+                      <option value="Lansing, MI (Capital City Airport, LAN)">
+                      <option value="Laramie, WY (Laramie Regional Airport, LAR)">
+                      <option value="Laredo, TX (Laredo International Airport, LRD)">
+                      <option value="Las Vegas, NV (McCarran International Airport, LAS)">
+                      <option value="Latrobe, PA (Arnold Palmer Regional Airport, LBE)">
+                      <option value="Lawton/Fort Sill, OK (Lawton Fort Sill Regional Airport, LAW)">
+                      <option value="Lewiston, ID (Lewiston Nez Perce County Airport, LWS)">
+                      <option value="Lexington, KY (Blue Grass Airport, LEX)">
+                      <option value="Lihue, HI (Lihue Airport, LIH)">
+                      <option value="Lincoln, NE (Lincoln Airport, LNK)">
+                      <option value="Little Rock, AR (Bill & Hillary Clinton National Airport/Adams Field, LIT)">
+                      <option value="Long Beach, CA (Long Beach /Daugherty Field/ Airport, LGB)">
+                      <option value="Longview, TX (East Texas Regional Airport, GGG)">
+                      <option value="Los Angeles, CA (Los Angeles International Airport, LAX)">
+                      <option value="Louisville, KY (Louisville International Standiford Field, SDF)">
+                      <option value="Lubbock, TX (Lubbock Preston Smith International Airport, LBB)">
+                      <option value="Madison, WI (Dane County Regional Truax Field, MSN)">
+                      <option value="Mammoth Lakes, CA (Mammoth Yosemite Airport, MMH)">
+                      <option value="Manchester, NH (Manchester-Boston Regional Airport, MHT)">
+                      <option value="Manhattan/Ft. Riley, KS (Manhattan Regional Airport, MHK)">
+                      <option value="Marquette, MI (Sawyer International Airport, MQT)">
+                      <option value="Martha's Vineyard, MA (Martha's Vineyard Airport, MVY)">
+                      <option value="Medford, OR (Rogue Valley International Medford Airport, MFR)">
+                      <option value="Melbourne, FL (Melbourne International Airport, MLB)">
+                      <option value="Memphis, TN (Memphis International Airport, MEM)">
+                      <option value="Meridian, MS (Key Field, MEI)">
+                      <option value="Miami, FL (Miami International Airport, MIA)">
+                      <option value="Midland/Odessa, TX (Midland International Airport, MAF)">
+                      <option value="Milwaukee, WI (General Mitchell International Airport, MKE)">
+                      <option value="Minneapolis, MN (Minneapolis-St Paul International/Wold-Chamberlain Airport, MSP)">
+                      <option value="Minot, ND (Minot International Airport, MOT)">
+                      <option value="Mission/McAllen/Edinburg, TX (Mc Allen Miller International Airport, MFE)">
+                      <option value="Missoula, MT (Missoula International Airport, MSO)">
+                      <option value="Mobile, AL (Mobile Regional Airport, MOB)">
+                      <option value="Moline, IL (Quad City International Airport, MLI)">
+                      <option value="Monroe, LA (Monroe Regional Airport, MLU)">
+                      <option value="Monterey, CA (Monterey Peninsula Airport, MRY)">
+                      <option value="Montgomery, AL (Montgomery Regional (Dannelly Field) Airport, MGM)">
+                      <option value="Montrose/Delta, CO (Montrose Regional Airport, MTJ)">
+                      <option value="Mosinee, WI (Central Wisconsin Airport, CWA)">
+                      <option value="Muskegon, MI (Muskegon County Airport, MKG)">
+                      <option value="Myrtle Beach, SC (Myrtle Beach International Airport, MYR)">
+                      <option value="Nantucket, MA (Nantucket Memorial Airport, ACK)">
+                      <option value="Nashville, TN (Nashville International Airport, BNA)">
+                      <option value="New Bern/Morehead/Beaufort, NC (Coastal Carolina Regional Airport, EWN)">
+                      <option value="New Orleans, LA (Louis Armstrong New Orleans International Airport, MSY)">
+                      <option value="New York, NY (La Guardia Airport, LGA)">
+                      <option value="New York, NY (John F Kennedy International Airport, JFK)">
+                      <option value="Newark, NJ (Newark Liberty International Airport, EWR)">
+                      <option value="Newburgh/Poughkeepsie, NY (Stewart International Airport, SWF)">
+                      <option value="Newport News/Williamsburg, VA (Newport News Williamsburg International Airport, PHF)">
+                      <option value="Niagara Falls, NY (Niagara Falls International Airport, IAG)">
+                      <option value="Nome, AK (Nome Airport, OME)">
+                      <option value="Norfolk, VA (Norfolk International Airport, ORF)">
+                      <option value="North Bend/Coos Bay, OR (Southwest Oregon Regional Airport, OTH)">
+                      <option value="Oakland, CA (Metropolitan Oakland International Airport, OAK)">
+                      <option value="Oklahoma City, OK (Will Rogers World Airport, OKC)">
+                      <option value="Omaha, NE (Eppley Airfield, OMA)">
+                      <option value="Ontario, CA (Ontario International Airport, ONT)">
+                      <option value="Orlando, FL (Orlando International Airport, MCO)">
+                      <option value="Paducah, KY (Barkley Regional Airport, PAH)">
+                      <option value="Pago Pago, TT (Pago Pago International Airport, PPG)">
+                      <option value="Palm Springs, CA (Palm Springs International Airport, PSP)">
+                      <option value="Panama City, FL (Northwest Florida Beaches International Airport, ECP)">
+                      <option value="Pasco/Kennewick/Richland, WA (Tri Cities Airport, PSC)">
+                      <option value="Pellston, MI (Pellston Regional Airport of Emmet County Airport, PLN)">
+                      <option value="Pensacola, FL (Pensacola Regional Airport, PNS)">
+                      <option value="Peoria, IL (General Wayne A. Downing Peoria International Airport, PIA)">
+                      <option value="Petersburg, AK (Petersburg James A Johnson Airport, PSG)">
+                      <option value="Philadelphia, PA (Philadelphia International Airport, PHL)">
+                      <option value="Phoenix, AZ (Phoenix Sky Harbor International Airport, PHX)">
+                      <option value="Pittsburgh, PA (Pittsburgh International Airport, PIT)">
+                      <option value="Plattsburgh, NY (Plattsburgh International Airport, PBG)">
+                      <option value="Pocatello, ID (Pocatello Regional Airport, PIH)">
+                      <option value="Ponce, PR (Mercedita Airport, PSE)">
+                      <option value="Portland, ME (Portland International Jetport Airport, PWM)">
+                      <option value="Portland, OR (Portland International Airport, PDX)">
+                      <option value="Providence, RI (Theodore Francis Green State Airport, PVD)">
+                      <option value="Punta Gorda, FL (Charlotte County Airport, PGD)">
+                      <option value="Raleigh/Durham, NC (Raleigh Durham International Airport, RDU)">
+                      <option value="Rapid City, SD (Rapid City Regional Airport, RAP)">
+                      <option value="Redding, CA (Redding Municipal Airport, RDD)">
+                      <option value="Reno, NV (Reno Tahoe International Airport, RNO)">
+                      <option value="Rhinelander, WI (Rhinelander Oneida County Airport, RHI)">
+                      <option value="Richmond, VA (Richmond International Airport, RIC)">
+                      <option value="Roanoke, VA (Roanoke–Blacksburg Regional Airport, ROA)">
+                      <option value="Rochester, MN (Rochester International Airport, RST)">
+                      <option value="Rochester, NY (Greater Rochester International Airport, ROC)">
+                      <option value="Rock Springs, WY (Southwest Wyoming Regional Airport, RKS)">
+                      <option value="Roswell, NM (Roswell International Air Center Airport, ROW)">
+                      <option value="Sacramento, CA (Sacramento International Airport, SMF)">
+                      <option value="Saginaw/Bay City/Midland, MI (MBS International Airport, MBS)">
+                      <option value="Saipan, TT (Saipan International Airport, SPN)">
+                      <option value="Salt Lake City, UT (Salt Lake City International Airport, SLC)">
+                      <option value="San Angelo, TX (San Angelo Regional Mathis Field, SJT)">
+                      <option value="San Antonio, TX (San Antonio International Airport, SAT)">
+                      <option value="San Diego, CA (San Diego International Airport, SAN)">
+                      <option value="San Francisco, CA (San Francisco International Airport, SFO)">
+                      <option value="San Jose, CA (Norman Y. Mineta San Jose International Airport, SJC)">
+                      <option value="San Juan, PR (Luis Munoz Marin International Airport, SJU)">
+                      <option value="San Luis Obispo, CA (San Luis County Regional Airport, SBP)">
+                      <option value="Santa Ana, CA (John Wayne Airport-Orange County Airport, SNA)">
+                      <option value="Santa Barbara, CA (Santa Barbara Municipal Airport, SBA)">
+                      <option value="Santa Fe, NM (Santa Fe Municipal Airport, SAF)">
+                      <option value="Santa Maria, CA (Santa Maria Pub/Capt G Allan Hancock Field, SMX)">
+                      <option value="Sarasota/Bradenton, FL (Sarasota Bradenton International Airport, SRQ)">
+                      <option value="Sault Ste. Marie, MI (Chippewa County International Airport, CIU)">
+                      <option value="Savannah, GA (Savannah Hilton Head International Airport, SAV)">
+                      <option value="Scottsbluff, NE (Western Neb. Rgnl/William B. Heilig Airport, BFF)">
+                      <option value="Scranton/Wilkes-Barre, PA (Wilkes Barre Scranton International Airport, AVP)">
+                      <option value="Seattle, WA (Seattle Tacoma International Airport, SEA)">
+                      <option value="Shreveport, LA (Shreveport Regional Airport, SHV)">
+                      <option value="Sioux Falls, SD (Joe Foss Field Airport, FSD)">
+                      <option value="Sitka, AK (Sitka Rocky Gutierrez Airport, SIT)">
+                      <option value="South Bend, IN (South Bend Regional Airport, SBN)">
+                      <option value="Spokane, WA (Spokane International Airport, GEG)">
+                      <option value="Springfield, IL (Abraham Lincoln Capital Airport, SPI)">
+                      <option value="Springfield, MO (Springfield Branson National Airport, SGF)">
+                      <option value="St. Augustine, FL (Northeast Florida Regional Airport, UST)">
+                      <option value="St. George, UT (St George Municipal Airport, SGU)">
+                      <option value="St. Louis, MO (St Louis Lambert International Airport, STL)">
+                      <option value="State College, PA (University Park Airport, SCE)">
+                      <option value="Sun Valley/Hailey/Ketchum, ID (Friedman Memorial Airport, SUN)">
+                      <option value="Syracuse, NY (Syracuse Hancock International Airport, SYR)">
+                      <option value="Tallahassee, FL (Tallahassee Regional Airport, TLH)">
+                      <option value="Tampa, FL (Tampa International Airport, TPA)">
+                      <option value="Texarkana, AR (Texarkana Regional Webb Field, TXK)">
+                      <option value="Traverse City, MI (Cherry Capital Airport, TVC)">
+                      <option value="Trenton, NJ (Trenton Mercer Airport, TTN)">
+                      <option value="Tucson, AZ (Tucson International Airport, TUS)">
+                      <option value="Tulsa, OK (Tulsa International Airport, TUL)">
+                      <option value="Twin Falls, ID (Joslin Field Magic Valley Regional Airport, TWF)">
+                      <option value="Tyler, TX (Tyler Pounds Regional Airport, TYR)">
+                      <option value="Valdosta, GA (Valdosta Regional Airport, VLD)">
+                      <option value="Valparaiso, FL (Destin-Ft Walton Beach Airport, VPS)">
+                      <option value="Waco, TX (Waco Regional Airport, ACT)">
+                      <option value="Washington, DC (Ronald Reagan Washington National Airport, DCA)">
+                      <option value="Washington, DC (Washington Dulles International Airport, IAD)">
+                      <option value="Wendover, UT (Wendover Airport, ENV)">
+                      <option value="West Palm Beach/Palm Beach, FL (Palm Beach International Airport, PBI)">
+                      <option value="West Yellowstone, MT (Yellowstone Airport, WYS)">
+                      <option value="White Plains, NY (Westchester County Airport, HPN)">
+                      <option value="Wichita Falls, TX (Sheppard Air Force Base-Wichita Falls Municipal Airport, SPS)">
+                      <option value="Wichita, KS (Wichita Eisenhower National Airport, ICT)">
+                      <option value="Williston, ND (Sloulin Field International Airport, ISN)">
+                      <option value="Wilmington, NC (Wilmington International Airport, ILM)">
+                      <option value="Worcester, MA (Worcester Regional Airport, ORH)">
+                      <option value="Wrangell, AK (Wrangell Airport, WRG)">
+                      <option value="Yakutat, AK (Yakutat Airport, YAK)">
+                      <option value="Yuma, AZ (Yuma MCAS/Yuma International Airport, YUM)">
+                    </datalist>
+                </div>
+              </div>
+
+              <div class="form-row mt-4 mb-2" id="dest_row">
+                <div class="input-group input-group-lg col-12 col-md-11">
+                  <input list="origin_airports" class="form-control rounded" placeholder="To" name="dest_name" id="dest_name" onfocus="this.value=''">
+                    <datalist id="dest_airports">
+                      <option value="Aberdeen, SD (Aberdeen Regional Airport, ABR)">
+                      <option value="Abilene, TX (Abilene Regional Airport, ABI)">
+                      <option value="Adak Island, AK (Adak Airport, ADK)">
+                      <option value="Aguadilla, PR (Rafael Hernandez Airport, BQN)">
+                      <option value="Akron, OH (Akron Canton Regional Airport, CAK)">
+                      <option value="Albany, GA (Southwest Georgia Regional Airport, ABY)">
+                      <option value="Albany, NY (Albany International Airport, ALB)">
+                      <option value="Albuquerque, NM (Albuquerque International Sunport, ABQ)">
+                      <option value="Alexandria, LA (Alexandria International Airport, AEX)">
+                      <option value="Allentown/Bethlehem/Easton, PA (Lehigh Valley International Airport, ABE)">
+                      <option value="Alpena, MI (Alpena County Regional Airport, APN)">
+                      <option value="Amarillo, TX (Rick Husband Amarillo International Airport, AMA)">
+                      <option value="Anchorage, AK (Ted Stevens Anchorage International Airport, ANC)">
+                      <option value="Appleton, WI (Appleton International Airport, ATW)">
+                      <option value="Arcata/Eureka, CA (California Redwood Coast-Humboldt County Airport, ACV)">
+                      <option value="Asheville, NC (Asheville Regional Airport, AVL)">
+                      <option value="Aspen, CO (Aspen-Pitkin Co/Sardy Field, ASE)">
+                      <option value="Atlanta, GA (Hartsfield Jackson Atlanta International Airport, ATL)">
+                      <option value="Atlantic City, NJ (Atlantic City International Airport, ACY)">
+                      <option value="Augusta, GA (Augusta Regional At Bush Field, AGS)">
+                      <option value="Austin, TX (Austin Bergstrom International Airport, AUS)">
+                      <option value="Bakersfield, CA (Meadows Field, BFL)">
+                      <option value="Baltimore, MD (Baltimore/Washington International Thurgood Marshall Airport, BWI)">
+                      <option value="Bangor, ME (Bangor International Airport, BGR)">
+                      <option value="Barrow, AK (Wiley Post Will Rogers Memorial Airport, BRW)">
+                      <option value="Baton Rouge, LA (Baton Rouge Metropolitan Airport, BTR)">
+                      <option value="Beaumont/Port Arthur, TX (Southeast Texas Regional Airport, BPT)">
+                      <option value="Bellingham, WA (Bellingham International Airport, BLI)">
+                      <option value="Bemidji, MN (Bemidji Regional Airport, BJI)">
+                      <option value="Bend/Redmond, OR (Roberts Field, RDM)">
+                      <option value="Bethel, AK (Bethel Airport, BET)">
+                      <option value="Billings, MT (Billings Logan International Airport, BIL)">
+                      <option value="Binghamton, NY (Greater Binghamton/Edwin A Link field, BGM)">
+                      <option value="Birmingham, AL (Birmingham-Shuttlesworth International Airport, BHM)">
+                      <option value="Bismarck/Mandan, ND (Bismarck Municipal Airport, BIS)">
+                      <option value="Bloomington/Normal, IL (Central Illinois Regional Airport at Bloomington-Normal, BMI)">
+                      <option value="Boise, ID (Boise Air Terminal/Gowen Field, BOI)">
+                      <option value="Boston, MA (General Edward Lawrence Logan International Airport, BOS)">
+                      <option value="Bozeman, MT (Gallatin Field, BZN)">
+                      <option value="Brainerd, MN (Brainerd Lakes Regional Airport, BRD)">
+                      <option value="Bristol/Johnson City/Kingsport, TN (Tri-Cities Regional TN/VA Airport, TRI)">
+                      <option value="Brownsville, TX (Brownsville South Padre Island International Airport, BRO)">
+                      <option value="Brunswick, GA (Brunswick Golden Isles Airport, BQK)">
+                      <option value="Buffalo, NY (Buffalo Niagara International Airport, BUF)">
+                      <option value="Burbank, CA (Bob Hope Airport, BUR)">
+                      <option value="Burlington, VT (Burlington International Airport, BTV)">
+                      <option value="Butte, MT (Bert Mooney Airport, BTM)">
+                      <option value="Casper, WY (Casper-Natrona County International Airport, CPR)">
+                      <option value="Cedar City, UT (Cedar City Regional Airport, CDC)">
+                      <option value="Cedar Rapids/Iowa City, IA (The Eastern Iowa Airport, CID)">
+                      <option value="Charleston, SC (Charleston Air Force Base-International Airport, CHS)">
+                      <option value="Charleston/Dunbar, WV (Yeager Airport, CRW)">
+                      <option value="Charlotte Amalie, VI (Cyril E. King Airport, STT)">
+                      <option value="Charlotte, NC (Charlotte Douglas International Airport, CLT)">
+                      <option value="Charlottesville, VA (Charlottesville Albemarle Airport, CHO)">
+                      <option value="Chattanooga, TN (Lovell Field, CHA)">
+                      <option value="Chicago, IL (Chicago O'Hare International Airport, ORD)">
+                      <option value="Chicago, IL (Chicago Midway International Airport, MDW)">
+                      <option value="Christiansted, VI (Henry E Rohlsen Airport, STX)">
+                      <option value="Cincinnati, OH (Cincinnati Northern Kentucky International Airport, CVG)">
+                      <option value="Cleveland, OH (Cleveland Hopkins International Airport, CLE)">
+                      <option value="Cody, WY (Yellowstone Regional Airport, COD)">
+                      <option value="College Station/Bryan, TX (Easterwood Field, CLL)">
+                      <option value="Colorado Springs, CO (City of Colorado Springs Municipal Airport, COS)">
+                      <option value="Columbia, SC (Columbia Metropolitan Airport, CAE)">
+                      <option value="Columbus, GA (Columbus Metropolitan Airport, CSG)">
+                      <option value="Columbus, MS (Golden Triangle Regional Airport, GTR)">
+                      <option value="Columbus, OH (John Glenn Columbus International Airport, CMH)">
+                      <option value="Cordova, AK (Merle K (Mudhole) Smith Airport, CDV)">
+                      <option value="Corpus Christi, TX (Corpus Christi International Airport, CRP)">
+                      <option value="Dallas, TX (Dallas Love Field, DAL)">
+                      <option value="Dallas/Fort Worth, TX (Dallas Fort Worth International Airport, DFW)">
+                      <option value="Dayton, OH (James M Cox Dayton International Airport, DAY)">
+                      <option value="Daytona Beach, FL (Daytona Beach International Airport, DAB)">
+                      <option value="Deadhorse, AK (Deadhorse Airport, SCC)">
+                      <option value="Denver, CO (Denver International Airport, DEN)">
+                      <option value="Des Moines, IA (Des Moines International Airport, DSM)">
+                      <option value="Detroit, MI (Detroit Metropolitan Wayne County Airport, DTW)">
+                      <option value="Devils Lake, ND (Devils Lake Regional Airport, DVL)">
+                      <option value="Dillingham, AK (Dillingham Airport, DLG)">
+                      <option value="Dothan, AL (Dothan Regional Airport, DHN)">
+                      <option value="Duluth, MN (Duluth International Airport, DLH)">
+                      <option value="Durango, CO (Durango La Plata County Airport, DRO)">
+                      <option value="Eagle, CO (Eagle County Regional Airport, EGE)">
+                      <option value="Eau Claire, WI (Chippewa Valley Regional Airport, EAU)">
+                      <option value="El Paso, TX (El Paso International Airport, ELP)">
+                      <option value="Elko, NV (Elko Regional Airport, EKO)">
+                      <option value="Elmira/Corning, NY (Elmira Corning Regional Airport, ELM)">
+                      <option value="Erie, PA (Erie International Tom Ridge Field, ERI)">
+                      <option value="Escanaba, MI (Delta County Airport, ESC)">
+                      <option value="Eugene, OR (Mahlon Sweet Field, EUG)">
+                      <option value="Evansville, IN (Evansville Regional Airport, EVV)">
+                      <option value="Fairbanks, AK (Fairbanks International Airport, FAI)">
+                      <option value="Fargo, ND (Hector International Airport, FAR)">
+                      <option value="Fayetteville, AR (Northwest Arkansas Regional Airport, XNA)">
+                      <option value="Fayetteville, NC (Fayetteville Regional Grannis Field, FAY)">
+                      <option value="Flagstaff, AZ (Flagstaff Pulliam Airport, FLG)">
+                      <option value="Flint, MI (Bishop International Airport, FNT)">
+                      <option value="Fort Lauderdale, FL (Fort Lauderdale Hollywood International Airport, FLL)">
+                      <option value="Fort Myers, FL (Southwest Florida International Airport, RSW)">
+                      <option value="Fort Smith, AR (Fort Smith Regional Airport, FSM)">
+                      <option value="Fort Wayne, IN (Fort Wayne International Airport, FWA)">
+                      <option value="Fresno, CA (Fresno Yosemite International Airport, FAT)">
+                      <option value="Gainesville, FL (Gainesville Regional Airport, GNV)">
+                      <option value="Garden City, KS (Garden City Regional Airport, GCK)">
+                      <option value="Gillette, WY (Gillette Campbell County Airport, GCC)">
+                      <option value="Grand Forks, ND (Grand Forks International Airport, GFK)">
+                      <option value="Grand Island, NE (Central Nebraska Regional Airport, GRI)">
+                      <option value="Grand Junction, CO (Grand Junction Regional Airport, GJT)">
+                      <option value="Grand Rapids, MI (Gerald R. Ford International Airport, GRR)">
+                      <option value="Great Falls, MT (Great Falls International Airport, GTF)">
+                      <option value="Green Bay, WI (Austin Straubel International Airport, GRB)">
+                      <option value="Greensboro/High Point, NC (Piedmont Triad International Airport, GSO)">
+                      <option value="Greer, SC (Greenville Spartanburg International Airport, GSP)">
+                      <option value="Guam, TT (Antonio B. Won Pat International Airport, GUM)">
+                      <option value="Gulfport/Biloxi, MS (Gulfport Biloxi International Airport, GPT)">
+                      <option value="Gunnison, CO (Gunnison Crested Butte Regional Airport, GUC)">
+                      <option value="Gustavus, AK (Gustavus Airport, GST)">
+                      <option value="Hancock/Houghton, MI (Houghton County Memorial Airport, CMX)">
+                      <option value="Harlingen/San Benito, TX (Valley International Airport, HRL)">
+                      <option value="Harrisburg, PA (Harrisburg International Airport, MDT)">
+                      <option value="Hartford, CT (Bradley International Airport, BDL)">
+                      <option value="Hattiesburg/Laurel, MS (Hattiesburg Laurel Regional Airport, PIB)">
+                      <option value="Hayden, CO (Yampa Valley Airport, HDN)">
+                      <option value="Hays, KS (Hays Regional Airport, HYS)">
+                      <option value="Helena, MT (Helena Regional Airport, HLN)">
+                      <option value="Hibbing, MN (Range Regional Airport, HIB)">
+                      <option value="Hilo, HI (Hilo International Airport, ITO)">
+                      <option value="Hobbs, NM (Lea County Regional Airport, HOB)">
+                      <option value="Honolulu, HI (Daniel K Inouye International Airport, HNL)">
+                      <option value="Houston, TX (Ellington Airport, EFD)">
+                      <option value="Houston, TX (George Bush Intercontinental Houston Airport, IAH)">
+                      <option value="Houston, TX (William P Hobby Airport, HOU)">
+                      <option value="Huntsville, AL (Huntsville International Carl T Jones Field, HSV)">
+                      <option value="Hyannis, MA (Barnstable Municipal Boardman Polando Field, HYA)">
+                      <option value="Idaho Falls, ID (Idaho Falls Regional Airport, IDA)">
+                      <option value="Indianapolis, IN (Indianapolis International Airport, IND)">
+                      <option value="International Falls, MN (Falls International Airport, INL)">
+                      <option value="Iron Mountain/Kingsfd, MI (Ford Airport, IMT)">
+                      <option value="Islip, NY (Long Island Mac Arthur Airport, ISP)">
+                      <option value="Ithaca/Cortland, NY (Ithaca Tompkins Regional Airport, ITH)">
+                      <option value="Jackson, WY (Jackson Hole Airport, JAC)">
+                      <option value="Jackson/Vicksburg, MS (Jackson-Medgar Wiley Evers International Airport, JAN)">
+                      <option value="Jacksonville, FL (Jacksonville International Airport, JAX)">
+                      <option value="Jacksonville/Camp Lejeune, NC (Albert J Ellis Airport, OAJ)">
+                      <option value="Jamestown, ND (Jamestown Regional Airport, JMS)">
+                      <option value="Joplin, MO (Joplin Regional Airport, JLN)">
+                      <option value="Juneau, AK (Juneau International Airport, JNU)">
+                      <option value="Kahului, HI (Kahului Airport, OGG)">
+                      <option value="Kalamazoo, MI (Kalamazoo Battle Creek International Airport, AZO)">
+                      <option value="Kalispell, MT (Glacier Park International Airport, FCA)">
+                      <option value="Kansas City, MO (Kansas City International Airport, MCI)">
+                      <option value="Ketchikan, AK (Ketchikan International Airport, KTN)">
+                      <option value="Key West, FL (Key West International Airport, EYW)">
+                      <option value="Killeen, TX (Robert Gray  Army Air Field Airport, GRK)">
+                      <option value="King Salmon, AK (King Salmon Airport, AKN)">
+                      <option value="Knoxville, TN (McGhee Tyson Airport, TYS)">
+                      <option value="Kodiak, AK (Kodiak Airport, ADQ)">
+                      <option value="Kona, HI (Ellison Onizuka Kona International At Keahole Airport, KOA)">
+                      <option value="Kotzebue, AK (Ralph Wien Memorial Airport, OTZ)">
+                      <option value="La Crosse, WI (La Crosse Municipal Airport, LSE)">
+                      <option value="Lafayette, LA (Lafayette Regional Airport, LFT)">
+                      <option value="Lake Charles, LA (Lake Charles Regional Airport, LCH)">
+                      <option value="Lansing, MI (Capital City Airport, LAN)">
+                      <option value="Laramie, WY (Laramie Regional Airport, LAR)">
+                      <option value="Laredo, TX (Laredo International Airport, LRD)">
+                      <option value="Las Vegas, NV (McCarran International Airport, LAS)">
+                      <option value="Latrobe, PA (Arnold Palmer Regional Airport, LBE)">
+                      <option value="Lawton/Fort Sill, OK (Lawton Fort Sill Regional Airport, LAW)">
+                      <option value="Lewiston, ID (Lewiston Nez Perce County Airport, LWS)">
+                      <option value="Lexington, KY (Blue Grass Airport, LEX)">
+                      <option value="Lihue, HI (Lihue Airport, LIH)">
+                      <option value="Lincoln, NE (Lincoln Airport, LNK)">
+                      <option value="Little Rock, AR (Bill & Hillary Clinton National Airport/Adams Field, LIT)">
+                      <option value="Long Beach, CA (Long Beach /Daugherty Field/ Airport, LGB)">
+                      <option value="Longview, TX (East Texas Regional Airport, GGG)">
+                      <option value="Los Angeles, CA (Los Angeles International Airport, LAX)">
+                      <option value="Louisville, KY (Louisville International Standiford Field, SDF)">
+                      <option value="Lubbock, TX (Lubbock Preston Smith International Airport, LBB)">
+                      <option value="Madison, WI (Dane County Regional Truax Field, MSN)">
+                      <option value="Mammoth Lakes, CA (Mammoth Yosemite Airport, MMH)">
+                      <option value="Manchester, NH (Manchester-Boston Regional Airport, MHT)">
+                      <option value="Manhattan/Ft. Riley, KS (Manhattan Regional Airport, MHK)">
+                      <option value="Marquette, MI (Sawyer International Airport, MQT)">
+                      <option value="Martha's Vineyard, MA (Martha's Vineyard Airport, MVY)">
+                      <option value="Medford, OR (Rogue Valley International Medford Airport, MFR)">
+                      <option value="Melbourne, FL (Melbourne International Airport, MLB)">
+                      <option value="Memphis, TN (Memphis International Airport, MEM)">
+                      <option value="Meridian, MS (Key Field, MEI)">
+                      <option value="Miami, FL (Miami International Airport, MIA)">
+                      <option value="Midland/Odessa, TX (Midland International Airport, MAF)">
+                      <option value="Milwaukee, WI (General Mitchell International Airport, MKE)">
+                      <option value="Minneapolis, MN (Minneapolis-St Paul International/Wold-Chamberlain Airport, MSP)">
+                      <option value="Minot, ND (Minot International Airport, MOT)">
+                      <option value="Mission/McAllen/Edinburg, TX (Mc Allen Miller International Airport, MFE)">
+                      <option value="Missoula, MT (Missoula International Airport, MSO)">
+                      <option value="Mobile, AL (Mobile Regional Airport, MOB)">
+                      <option value="Moline, IL (Quad City International Airport, MLI)">
+                      <option value="Monroe, LA (Monroe Regional Airport, MLU)">
+                      <option value="Monterey, CA (Monterey Peninsula Airport, MRY)">
+                      <option value="Montgomery, AL (Montgomery Regional (Dannelly Field) Airport, MGM)">
+                      <option value="Montrose/Delta, CO (Montrose Regional Airport, MTJ)">
+                      <option value="Mosinee, WI (Central Wisconsin Airport, CWA)">
+                      <option value="Muskegon, MI (Muskegon County Airport, MKG)">
+                      <option value="Myrtle Beach, SC (Myrtle Beach International Airport, MYR)">
+                      <option value="Nantucket, MA (Nantucket Memorial Airport, ACK)">
+                      <option value="Nashville, TN (Nashville International Airport, BNA)">
+                      <option value="New Bern/Morehead/Beaufort, NC (Coastal Carolina Regional Airport, EWN)">
+                      <option value="New Orleans, LA (Louis Armstrong New Orleans International Airport, MSY)">
+                      <option value="New York, NY (La Guardia Airport, LGA)">
+                      <option value="New York, NY (John F Kennedy International Airport, JFK)">
+                      <option value="Newark, NJ (Newark Liberty International Airport, EWR)">
+                      <option value="Newburgh/Poughkeepsie, NY (Stewart International Airport, SWF)">
+                      <option value="Newport News/Williamsburg, VA (Newport News Williamsburg International Airport, PHF)">
+                      <option value="Niagara Falls, NY (Niagara Falls International Airport, IAG)">
+                      <option value="Nome, AK (Nome Airport, OME)">
+                      <option value="Norfolk, VA (Norfolk International Airport, ORF)">
+                      <option value="North Bend/Coos Bay, OR (Southwest Oregon Regional Airport, OTH)">
+                      <option value="Oakland, CA (Metropolitan Oakland International Airport, OAK)">
+                      <option value="Oklahoma City, OK (Will Rogers World Airport, OKC)">
+                      <option value="Omaha, NE (Eppley Airfield, OMA)">
+                      <option value="Ontario, CA (Ontario International Airport, ONT)">
+                      <option value="Orlando, FL (Orlando International Airport, MCO)">
+                      <option value="Paducah, KY (Barkley Regional Airport, PAH)">
+                      <option value="Pago Pago, TT (Pago Pago International Airport, PPG)">
+                      <option value="Palm Springs, CA (Palm Springs International Airport, PSP)">
+                      <option value="Panama City, FL (Northwest Florida Beaches International Airport, ECP)">
+                      <option value="Pasco/Kennewick/Richland, WA (Tri Cities Airport, PSC)">
+                      <option value="Pellston, MI (Pellston Regional Airport of Emmet County Airport, PLN)">
+                      <option value="Pensacola, FL (Pensacola Regional Airport, PNS)">
+                      <option value="Peoria, IL (General Wayne A. Downing Peoria International Airport, PIA)">
+                      <option value="Petersburg, AK (Petersburg James A Johnson Airport, PSG)">
+                      <option value="Philadelphia, PA (Philadelphia International Airport, PHL)">
+                      <option value="Phoenix, AZ (Phoenix Sky Harbor International Airport, PHX)">
+                      <option value="Pittsburgh, PA (Pittsburgh International Airport, PIT)">
+                      <option value="Plattsburgh, NY (Plattsburgh International Airport, PBG)">
+                      <option value="Pocatello, ID (Pocatello Regional Airport, PIH)">
+                      <option value="Ponce, PR (Mercedita Airport, PSE)">
+                      <option value="Portland, ME (Portland International Jetport Airport, PWM)">
+                      <option value="Portland, OR (Portland International Airport, PDX)">
+                      <option value="Providence, RI (Theodore Francis Green State Airport, PVD)">
+                      <option value="Punta Gorda, FL (Charlotte County Airport, PGD)">
+                      <option value="Raleigh/Durham, NC (Raleigh Durham International Airport, RDU)">
+                      <option value="Rapid City, SD (Rapid City Regional Airport, RAP)">
+                      <option value="Redding, CA (Redding Municipal Airport, RDD)">
+                      <option value="Reno, NV (Reno Tahoe International Airport, RNO)">
+                      <option value="Rhinelander, WI (Rhinelander Oneida County Airport, RHI)">
+                      <option value="Richmond, VA (Richmond International Airport, RIC)">
+                      <option value="Roanoke, VA (Roanoke–Blacksburg Regional Airport, ROA)">
+                      <option value="Rochester, MN (Rochester International Airport, RST)">
+                      <option value="Rochester, NY (Greater Rochester International Airport, ROC)">
+                      <option value="Rock Springs, WY (Southwest Wyoming Regional Airport, RKS)">
+                      <option value="Roswell, NM (Roswell International Air Center Airport, ROW)">
+                      <option value="Sacramento, CA (Sacramento International Airport, SMF)">
+                      <option value="Saginaw/Bay City/Midland, MI (MBS International Airport, MBS)">
+                      <option value="Saipan, TT (Saipan International Airport, SPN)">
+                      <option value="Salt Lake City, UT (Salt Lake City International Airport, SLC)">
+                      <option value="San Angelo, TX (San Angelo Regional Mathis Field, SJT)">
+                      <option value="San Antonio, TX (San Antonio International Airport, SAT)">
+                      <option value="San Diego, CA (San Diego International Airport, SAN)">
+                      <option value="San Francisco, CA (San Francisco International Airport, SFO)">
+                      <option value="San Jose, CA (Norman Y. Mineta San Jose International Airport, SJC)">
+                      <option value="San Juan, PR (Luis Munoz Marin International Airport, SJU)">
+                      <option value="San Luis Obispo, CA (San Luis County Regional Airport, SBP)">
+                      <option value="Santa Ana, CA (John Wayne Airport-Orange County Airport, SNA)">
+                      <option value="Santa Barbara, CA (Santa Barbara Municipal Airport, SBA)">
+                      <option value="Santa Fe, NM (Santa Fe Municipal Airport, SAF)">
+                      <option value="Santa Maria, CA (Santa Maria Pub/Capt G Allan Hancock Field, SMX)">
+                      <option value="Sarasota/Bradenton, FL (Sarasota Bradenton International Airport, SRQ)">
+                      <option value="Sault Ste. Marie, MI (Chippewa County International Airport, CIU)">
+                      <option value="Savannah, GA (Savannah Hilton Head International Airport, SAV)">
+                      <option value="Scottsbluff, NE (Western Neb. Rgnl/William B. Heilig Airport, BFF)">
+                      <option value="Scranton/Wilkes-Barre, PA (Wilkes Barre Scranton International Airport, AVP)">
+                      <option value="Seattle, WA (Seattle Tacoma International Airport, SEA)">
+                      <option value="Shreveport, LA (Shreveport Regional Airport, SHV)">
+                      <option value="Sioux Falls, SD (Joe Foss Field Airport, FSD)">
+                      <option value="Sitka, AK (Sitka Rocky Gutierrez Airport, SIT)">
+                      <option value="South Bend, IN (South Bend Regional Airport, SBN)">
+                      <option value="Spokane, WA (Spokane International Airport, GEG)">
+                      <option value="Springfield, IL (Abraham Lincoln Capital Airport, SPI)">
+                      <option value="Springfield, MO (Springfield Branson National Airport, SGF)">
+                      <option value="St. Augustine, FL (Northeast Florida Regional Airport, UST)">
+                      <option value="St. George, UT (St George Municipal Airport, SGU)">
+                      <option value="St. Louis, MO (St Louis Lambert International Airport, STL)">
+                      <option value="State College, PA (University Park Airport, SCE)">
+                      <option value="Sun Valley/Hailey/Ketchum, ID (Friedman Memorial Airport, SUN)">
+                      <option value="Syracuse, NY (Syracuse Hancock International Airport, SYR)">
+                      <option value="Tallahassee, FL (Tallahassee Regional Airport, TLH)">
+                      <option value="Tampa, FL (Tampa International Airport, TPA)">
+                      <option value="Texarkana, AR (Texarkana Regional Webb Field, TXK)">
+                      <option value="Traverse City, MI (Cherry Capital Airport, TVC)">
+                      <option value="Trenton, NJ (Trenton Mercer Airport, TTN)">
+                      <option value="Tucson, AZ (Tucson International Airport, TUS)">
+                      <option value="Tulsa, OK (Tulsa International Airport, TUL)">
+                      <option value="Twin Falls, ID (Joslin Field Magic Valley Regional Airport, TWF)">
+                      <option value="Tyler, TX (Tyler Pounds Regional Airport, TYR)">
+                      <option value="Valdosta, GA (Valdosta Regional Airport, VLD)">
+                      <option value="Valparaiso, FL (Destin-Ft Walton Beach Airport, VPS)">
+                      <option value="Waco, TX (Waco Regional Airport, ACT)">
+                      <option value="Washington, DC (Ronald Reagan Washington National Airport, DCA)">
+                      <option value="Washington, DC (Washington Dulles International Airport, IAD)">
+                      <option value="Wendover, UT (Wendover Airport, ENV)">
+                      <option value="West Palm Beach/Palm Beach, FL (Palm Beach International Airport, PBI)">
+                      <option value="West Yellowstone, MT (Yellowstone Airport, WYS)">
+                      <option value="White Plains, NY (Westchester County Airport, HPN)">
+                      <option value="Wichita Falls, TX (Sheppard Air Force Base-Wichita Falls Municipal Airport, SPS)">
+                      <option value="Wichita, KS (Wichita Eisenhower National Airport, ICT)">
+                      <option value="Williston, ND (Sloulin Field International Airport, ISN)">
+                      <option value="Wilmington, NC (Wilmington International Airport, ILM)">
+                      <option value="Worcester, MA (Worcester Regional Airport, ORH)">
+                      <option value="Wrangell, AK (Wrangell Airport, WRG)">
+                      <option value="Yakutat, AK (Yakutat Airport, YAK)">
+                      <option value="Yuma, AZ (Yuma MCAS/Yuma International Airport, YUM)">
+                    </datalist>
+                </div>
+              </div> -->
+
+              <!-- <div class="form-group mt-4" id="parameters-group">
+
+                <div class="form-row align-items-center" id="dep_date_row">
+                  <div class="input-group input-group-lg col-12 col-md-11">
+                    <label for="dep_date" class="col-sm-7 control-label mb-2">Departure date</label>
+                    <div class="col-sm-5 mb-2">
+                      <input type="date" class="form-control input-sm rounded" name="dep_date" id="dep_date">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row align-items-center" id="dep_time_row">
+                  <div class="input-group input-group-lg col-12 col-md-11">
+                    <label for="dep_time" class="col-sm-7 control-label mb-2">Departure local time</label>
+                    <div class="col-sm-5 mb-2">
+                      <input type="time" class="form-control input-sm rounded" name="dep_time" id="dep_time">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row align-items-center" id="duration_row">
+                  <div class="input-group input-group-lg col-12 col-md-11">
+                    <label for="duration" class="col-sm-7 control-label mb-2">Flight duration</label>
+                    <div class="col-sm-5 mb-2">
+                    <form id='duration'>
+                      <input type='number' class="input-sm rounded" id='duration_hour' name='duration_hour'  min='0' max='30'>
+                      <label for='duration_hour'>&nbsp; h &nbsp;</label>
+                      <input type='number' class="input-sm rounded" id='duration_min' name='duration_min' min='0' max='59'>
+                      <label for='duration_min'>&nbsp; min</label>
+                    </form>
+                  </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div>
+                <span>True delay: &nbsp;</span><span id="true_delay">Unknown</span>
+              </div>
+
+              <span class="input-group-btn col-sm-7 mb-2" id="predict">
+                  <button type="submit" class="btn btn-block btn-lg btn-primary" id="submit_btn" name="submit_btn" style="width: 120px">Predict!</button>
+              </span>
+
+            </form> -->
+          </div>
+        </div>
+        
+      </div>
+
+    </header>
+
+{% endblock %}

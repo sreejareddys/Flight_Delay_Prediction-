@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1 {font-family: "Raleway", Arial, sans-serif}
+h1 {letter-spacing: 6px}
+.w3-row-padding img {margin-bottom: 12px}
+#header {
+  float: left;
+  margin-left: 100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=date], input[type=email], select {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input:focus, select:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+</style>
+</head>
+<body class="w3-content">
+
+<header class="w3-panel w3-center w3-opacity" style="padding:2px 16px">
+  <a href="/" class="w3-bar-item w3-button">Flight Delay Prediction Using ML</a>
+  <div class="w3-padding-32">
+    <div class="w3-bar w3-border">
+      <h1 class="w3-xlarge">New User Enrollment</h1>
+    </div>
+  </div>
+</header>
+
+<form method="GET" action="/signup">
+  <div class="container">
+    <h1 align='center'>Register</h1>
+    <p align='center'>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label><b>Name</b></label>
+    <input type="text" placeholder="Enter name" name="username" id="username" maxlength="10" required>
+
+    <label><b>Date of Birth</b></label>
+    <input type="date" name="DOB" id="DOB" required>
+
+    <label><b>Sex</b></label>
+    <select name="Sex" id="Sex" required>
+      <option value="">Select</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+    <label><b>Contact Number</b></label>
+    <input type="text" placeholder="Enter 10-digit number" name="CN" id="CN" pattern="\d{10}" maxlength="10" title="Enter exactly 10 digits" required>
+
+    <label><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" id="email" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+   
+
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+
+  <div class="container signin">
+    <p>Already have an account? <a href="/login">Sign in</a>.</p>
+  </div>
+</form>
+
+
+</body>
+</html>

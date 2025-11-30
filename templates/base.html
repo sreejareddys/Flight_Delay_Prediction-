@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Prediction of the delay for any flight in the USA.">
+    <meta name="author" content="Jérôme Hoen">
+    <meta name="theme-color" content="#1e90ff" />
+
+    <title>Flight delay prediction</title>
+
+
+    <link rel="icon" href="../static/img/favicon.ico">
+
+    <!-- Bootstrap core CSS 
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    -->
+    <link href="../static/vendor/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/flight_prediction.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+
+    {% block index %}{% endblock %}
+
+    <!-- Footer -->
+    <footer style="align-items: center; margin-left: 40%;" class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+     -->
+    <script src="../static/vendor/jquery.min.js"></script>
+    <script src="../static/vendor/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('input:text').on('focus', function() {
+              var $this = $(this)
+                .one('mouseup.mouseupSelect', function() {
+                  $this.select();
+                  return false;
+                })
+                .one('mousedown', function() {
+                  // compensate for untriggered 'mouseup' caused by focus via tab
+                  $this.off('mouseup.mouseupSelect');
+                })
+                .select();
+            });
+        });
+
+        $(function() {
+          $('#random_btn').bind('click', function() {
+            $('#results_block').css({'display':'none'});
+            $.post('/', {  
+                random: true,
+            }, function(data) {
+              $('#carrier_name').val(data.carrier_name);
+              $('#origin_name').val(data.origin_name);
+              $('#dest_name').val(data.dest_name);
+              $('#dep_date').val(data.dep_date);
+              $('#dep_time').val(data.dep_time);
+              $('#duration_hour').val(data.duration_hour);
+              $('#duration_min').val(data.duration_min);
+              $('#true_delay').text(data.true_delay);
+            });
+            return false;
+          });
+        });
+        $(function() {
+          $('#submit_btn').bind('click', function() {
+            $('#results_block').css({'display':'block'});
+            $.post('/', {  
+                carrier_name: $('#carrier_name').val(),
+                origin_name: $('#origin_name').val(),
+                dest_name: $('#dest_name').val(),
+                dep_date: $('#dep_date').val(),
+                dep_time: $('#dep_time').val(),
+                duration_hour: $('#duration_hour').val(),
+                duration_min: $('#duration_min').val(),
+            }, function(data) {
+              $('#reg').text(data.reg);
+              $('#class_0').text(data.classes[0]);
+              $('#class_1').text(data.classes[1]);
+              $('#class_2').text(data.classes[2]);
+              $('#class_3').text(data.classes[3]);
+              $('#class_4').text(data.classes[4]);
+              $('#class_5').text(data.classes[5]);
+            });
+            return false;
+          });
+        });
+    </script>
+  </body>
+</html>
